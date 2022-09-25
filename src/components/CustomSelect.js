@@ -84,6 +84,7 @@ const CustomSelect = ({
             selectedValue={selectedValue}
             selectedIndex={selectedIndex}
             changeSelectedHandler={changeSelectedHandler}
+            name={name}
           />
         )}
       </div>
