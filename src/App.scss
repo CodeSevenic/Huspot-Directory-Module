@@ -1,0 +1,26 @@
+.topco-d-search-brand > h2 {
+  font-weight: normal;
+  font-size: 48px;
+}
+
+.topco-d-search-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topco-d-search-brand-box > input {
+  width: 480px;
+  padding: 20px 25px;
+  font-size: 20px;
+  border-color: black;
+}
+
+.topco-brand-selectors > select {
+  border-color: black;
+  border-radius: 0;
+  width: 40%;
+  font-size: 20px;
+  height: 70px;
+  border-width: 2px;
+}
