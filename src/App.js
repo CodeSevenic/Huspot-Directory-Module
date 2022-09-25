@@ -96,11 +96,10 @@ function App({ moduleData }) {
             />
             <CustomSelect
               label={'Select another country'}
-              searchPlaceholder="Search"
               data={countries}
-              value={formData.countryOne.value}
+              value={formData.countryTwo.value}
               onChange={changeHandler}
-              error={formData.countryOne.error}
+              error={formData.countryTwo.error}
               name="countryOne"
             />
           </form>
