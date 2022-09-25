@@ -10,6 +10,7 @@ const CustomSelect = ({
   onChange,
   error,
   defaultOptionLabel,
+  searchPlaceholder,
 }) => {
   const [selectedValue, setSelectedValue] = useState(value);
   const [selectedIndex, setSelectedIndex] = useState(
@@ -78,6 +79,7 @@ const CustomSelect = ({
         </div>
         {showDropdown && (
           <Dropdown
+            searchPlaceholder={searchPlaceholder}
             search={search}
             searchChangeHandler={searchChangeHandler}
             options={options}
