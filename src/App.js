@@ -92,6 +92,16 @@ function App({ moduleData }) {
               value={formData.countryOne.value}
               onChange={changeHandler}
               error={formData.countryOne.error}
+              name="countryOne"
+            />
+            <CustomSelect
+              label={'Select another country'}
+              searchPlaceholder="Search"
+              data={countries}
+              value={formData.countryOne.value}
+              onChange={changeHandler}
+              error={formData.countryOne.error}
+              name="countryOne"
             />
           </form>
         </div>
