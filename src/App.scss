@@ -24,3 +24,38 @@
   height: 70px;
   border-width: 2px;
 }
+
+form {
+  border: 1px solid #eee;
+  padding: 40px;
+
+  &__group {
+    margin-bottom: 20px;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+}
+
+.error {
+  font-size: 12px;
+  padding: 5px 0;
+  color: red;
+}
+
+.dropdown {
+  position: relative;
+
+  &__selected {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+}
