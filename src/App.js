@@ -100,8 +100,11 @@ function App({ moduleData }) {
               value={formData.countryTwo.value}
               onChange={changeHandler}
               error={formData.countryTwo.error}
-              name="countryOne"
+              name="countryTwo"
             />
+            <button type="submit" className="btn">
+              Submit
+            </button>
           </form>
         </div>
       </div>
