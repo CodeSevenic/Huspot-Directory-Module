@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
-import CustomSelect from './components/CustomSelect';
-import { countries } from './data';
+import SelectSearch from 'react-select-search';
 
 function App({ moduleData }) {
   // eslint-disable-next-line no-console
@@ -10,59 +9,10 @@ function App({ moduleData }) {
     moduleData,
   );
 
-  const [formData, setFormData] = useState({
-    countryOne: {
-      value: '',
-      error: '',
-    },
-
-    countryTwo: {
-      value: 'Croatia',
-      error: '',
-    },
-  });
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    let errors = {};
-
-    for (let key in formData) {
-      if (formData[key].value === '') {
-        errors[key] = 'Please select one option';
-      }
-    }
-
-    if (Object.keys(errors).length === 0) {
-      console.log(formData.countryOne, formData.countryTwo.value);
-      console.log('submit form...');
-    } else {
-      setFormData((prev) => {
-        let data = {};
-        for (let key in errors) {
-          data[key] = {
-            ...prev[key],
-            error: errors[key],
-          };
-        }
-
-        return {
-          ...prev,
-          ...data,
-        };
-      });
-    }
-  };
-
-  const changeHandler = (value, name) => {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: {
-        value,
-        error: value !== '' ? '' : prev[name].error,
-      },
-    }));
-  };
+  const options = [
+    { name: 'Swedish', value: 'Swedish' },
+    { name: 'English', value: 'English' },
+  ];
 
   return (
     <section className="topco-d-container">
@@ -75,37 +25,25 @@ function App({ moduleData }) {
             <input type="search" name="" id="" placeholder="Search Brand" />
           </div>
         </div>
-        <div className="topco-brand-selectors">
-          <select name="brand-select" id="brand-select">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
-          </select>
-        </div>
-        <div className="topco-brand-sectors">
-          <form action="" onSubmit={submitHandler}>
-            <CustomSelect
-              label={'Select a country'}
-              searchPlaceholder="Search"
-              data={countries}
-              value={formData.countryOne.value}
-              onChange={changeHandler}
-              error={formData.countryOne.error}
-              name="countryOne"
-            />
-            <CustomSelect
-              label={'Select another country'}
-              data={countries}
-              value={formData.countryTwo.value}
-              onChange={changeHandler}
-              error={formData.countryTwo.error}
-              name="countryTwo"
-            />
-            <button type="submit" className="btn">
-              Submit
-            </button>
-          </form>
+
+        <div className="brand-dropdowns">
+          <div className="topco-brand-selectors">
+            <select name="brand-select" id="brand-select">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="opel">Opel</option>
+              <option value="audi">Audi</option>
+            </select>
+          </div>
+          <SelectSearch
+            options={options}
+            name="language"
+            placeholder="Brand Sector"
+            search
+          />
+          <div className="results-btn">
+            <button>See Results</button>
+          </div>
         </div>
       </div>
     </section>
