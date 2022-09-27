@@ -2,8 +2,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HubSpotAutoUploadPlugin = require('@hubspot/webpack-cms-plugins/HubSpotAutoUploadPlugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+// eslint-disable-next-line
 const autoprefixer = require('autoprefixer');
-
 
 const hubspotConfig = ({ portal, autoupload } = {}) => {
   return {
