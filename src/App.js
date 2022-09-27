@@ -3,11 +3,12 @@ import './App.scss';
 import SelectSearch from 'react-select-search';
 
 function App({ moduleData }) {
-  const { companies } = moduleData;
+  const { companies, hubdbrow_field } = moduleData;
   // eslint-disable-next-line no-console
   console.log(
     'all of your data typically accessed via the "module" keyword in HubL is available as JSON here!',
     companies,
+    hubdbrow_field,
   );
 
   const options = [

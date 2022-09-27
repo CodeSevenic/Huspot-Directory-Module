@@ -66,9 +66,25 @@
 
 .logo-box {
   box-shadow: 0 0 15px -10px #000;
+  min-height: 360px;
   padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+@media screen and (max-width: 1023px) {
+  .company-logos-grid {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .company-logos-grid {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    min-height: 100px;
+  }
+}
 /**
  * Main wrapper
  */

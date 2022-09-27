@@ -14,13 +14,8 @@
     "type": "number"
   },
   {
-    "type": "group",
-    "id": "98c2753a-6e77-8d8a-1c64-293a845ff490",
-    "label": "Companies",
     "children": [
       {
-        "type": "image",
-        "id": "783c4c09-7220-0e82-3891-9dda927db2e3",
         "default": {
           "size_type": "auto",
           "src": "https://digital.topco.co.za/hubfs/afrox_feature_image-2-400x284-1.png",
@@ -31,14 +26,18 @@
           "max_width": 400,
           "max_height": 284
         },
+        "display_width": null,
+        "id": "783c4c09-7220-0e82-3891-9dda927db2e3",
+        "label": "Company Logo",
+        "locked": false,
+        "name": "company_logo",
+        "required": false,
         "resizable": true,
         "responsive": true,
         "show_loading": false,
-        "label": "Company Logo",
-        "name": "company_logo"
+        "type": "image"
       }
     ],
-    "name": "companies",
     "default": [
       {
         "company_logo": {
@@ -113,8 +112,36 @@
         }
       }
     ],
+    "display_width": null,
+    "expanded": false,
+    "id": "98c2753a-6e77-8d8a-1c64-293a845ff490",
+    "label": "Companies",
+    "locked": false,
+    "name": "companies",
     "occurrence": {
       "default": 6
-    }
+    },
+    "required": false,
+    "tab": "CONTENT",
+    "type": "group"
+  },
+  {
+    "columns_to_fetch": [
+      "company"
+    ],
+    "default": {
+      "id": 75066825888
+    },
+    "display_columns": [
+      "company"
+    ],
+    "display_width": null,
+    "id": "5a91ac4d-ac53-34b4-79fc-a026c188d4b7",
+    "label": "HubDB row",
+    "locked": false,
+    "name": "hubdbrow_field",
+    "required": false,
+    "table_name_or_id": "5416353",
+    "type": "hubdbrow"
   }
 ]
