@@ -45,6 +45,16 @@ function App({ moduleData }) {
             <button>See Results</button>
           </div>
         </div>
+
+        <div className="company-logos-grid">
+          {/* {moduleData.companies.map((company, index) => {
+            return (
+              <div key={index}>
+                <img width="100%" src={company.company_logo.src} alt="" />
+              </div>
+            );
+          })} */}
+        </div>
       </div>
     </section>
   );

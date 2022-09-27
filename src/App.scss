@@ -51,6 +51,11 @@
   width: 100%;
 }
 
+.company-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px 1fr));
+}
+
 /**
  * Main wrapper
  */
