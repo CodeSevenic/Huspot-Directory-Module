@@ -11,6 +11,11 @@
   align-items: center;
 }
 
+.topco-d-search-brand-box {
+  max-width: 550px;
+  width: 100%;
+}
+
 .topco-d-search-brand-box > input {
   max-width: 550px;
   width: 100%;
@@ -38,6 +43,7 @@
   gap: 30px;
   align-items: center;
   justify-content: space-between;
+  padding-top: 40px;
 }
 
 .results-btn {
@@ -54,6 +60,13 @@
 .company-logos-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
+  gap: 50px;
+  padding: 70px 0;
+}
+
+.logo-box {
+  box-shadow: 0 0 15px -10px #000;
+  padding: 30px;
 }
 
 /**
