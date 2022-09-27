@@ -1,13 +1,120 @@
 [
   {
     "default": 0,
-    "min": 0,
-    "max": 100,
     "display": "slider",
+    "display_width": null,
+    "id": "initial_count",
     "label": "Starting number of reasons",
     "locked": false,
+    "max": 100,
+    "min": 0,
     "name": "initial_count",
     "required": false,
+    "step": 1,
     "type": "number"
+  },
+  {
+    "type": "group",
+    "id": "98c2753a-6e77-8d8a-1c64-293a845ff490",
+    "label": "Companies",
+    "children": [
+      {
+        "type": "image",
+        "id": "783c4c09-7220-0e82-3891-9dda927db2e3",
+        "default": {
+          "size_type": "auto",
+          "src": "https://digital.topco.co.za/hubfs/afrox_feature_image-2-400x284-1.png",
+          "alt": "afrox_feature_image-2-400x284-1",
+          "loading": "lazy",
+          "width": 400,
+          "height": 284,
+          "max_width": 400,
+          "max_height": 284
+        },
+        "resizable": true,
+        "responsive": true,
+        "show_loading": false,
+        "label": "Company Logo",
+        "name": "company_logo"
+      }
+    ],
+    "name": "companies",
+    "default": [
+      {
+        "company_logo": {
+          "size_type": "auto",
+          "src": "https://digital.topco.co.za/hubfs/afrox_feature_image-2-400x284-1.png",
+          "alt": "afrox_feature_image-2-400x284-1",
+          "loading": "lazy",
+          "width": 400,
+          "height": 284,
+          "max_width": 400,
+          "max_height": 284
+        }
+      },
+      {
+        "company_logo": {
+          "size_type": "auto",
+          "src": "https://digital.topco.co.za/hubfs/afrox_feature_image-2-400x284-1.png",
+          "alt": "afrox_feature_image-2-400x284-1",
+          "loading": "lazy",
+          "width": 400,
+          "height": 284,
+          "max_width": 400,
+          "max_height": 284
+        }
+      },
+      {
+        "company_logo": {
+          "size_type": "auto",
+          "src": "https://digital.topco.co.za/hubfs/afrox_feature_image-2-400x284-1.png",
+          "alt": "afrox_feature_image-2-400x284-1",
+          "loading": "lazy",
+          "width": 400,
+          "height": 284,
+          "max_width": 400,
+          "max_height": 284
+        }
+      },
+      {
+        "company_logo": {
+          "size_type": "auto",
+          "src": "https://digital.topco.co.za/hubfs/afrox_feature_image-2-400x284-1.png",
+          "alt": "afrox_feature_image-2-400x284-1",
+          "loading": "lazy",
+          "width": 400,
+          "height": 284,
+          "max_width": 400,
+          "max_height": 284
+        }
+      },
+      {
+        "company_logo": {
+          "size_type": "auto",
+          "src": "https://digital.topco.co.za/hubfs/afrox_feature_image-2-400x284-1.png",
+          "alt": "afrox_feature_image-2-400x284-1",
+          "loading": "lazy",
+          "width": 400,
+          "height": 284,
+          "max_width": 400,
+          "max_height": 284
+        }
+      },
+      {
+        "company_logo": {
+          "size_type": "auto",
+          "src": "https://digital.topco.co.za/hubfs/afrox_feature_image-2-400x284-1.png",
+          "alt": "afrox_feature_image-2-400x284-1",
+          "loading": "lazy",
+          "width": 400,
+          "height": 284,
+          "max_width": 400,
+          "max_height": 284
+        }
+      }
+    ],
+    "occurrence": {
+      "default": 6
+    }
   }
 ]

@@ -3,10 +3,11 @@ import './App.scss';
 import SelectSearch from 'react-select-search';
 
 function App({ moduleData }) {
+  const { companies } = moduleData;
   // eslint-disable-next-line no-console
   console.log(
     'all of your data typically accessed via the "module" keyword in HubL is available as JSON here!',
-    moduleData,
+    companies,
   );
 
   const options = [
@@ -47,13 +48,13 @@ function App({ moduleData }) {
         </div>
 
         <div className="company-logos-grid">
-          {/* {moduleData.companies.map((company, index) => {
+          {companies.map((company, index) => {
             return (
-              <div key={index}>
+              <div className="logo-box" key={index}>
                 <img width="100%" src={company.company_logo.src} alt="" />
               </div>
             );
-          })} */}
+          })}
         </div>
       </div>
     </section>
