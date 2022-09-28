@@ -1,13 +1,20 @@
-{{ require_css(get_asset_url('../../main.css')) }}
-{{ require_js(get_asset_url('../../main.js'), 'footer') }}
-{%- set instance_id = name %}
+{{ require_css(get_asset_url('../../main.css')) }} {{
+require_js(get_asset_url('../../main.js'), 'footer') }} {%- set instance_id =
+name %} {% set comp_table_rows = hubdb_table_rows(5406129) %} {#
+========================================================== #} {# #} {% set
+new_list = [] %} {% for row in comp_table_rows %} {% set new_list2 =
+new_list.append({"company": "'" + row.company_name + "'", "image": "'" +
+row.brand_image.url + "'", "rich_text": "`" + row.rich_text|replace('"', "'")|replace(":", "")|replace("='", "")|replace(";'", "") +
+"`"}) %} {% endfor %} 
 
 <div class="cms-react-boilerplate">
-  <script type="application/json"
+  <script
+    type="application/json"
     data-module-instance="{{ instance_id }}"
-    data-portal-id="{{ portal_id }}">
-      {{ module|tojson }}
+    data-portal-id="{{ portal_id }}"
+    data-table-rows="{{new_list|replace('company=', "'company' : ")|replace('image=', "'image' : ")|replace('rich_text=', "'rich_text' : ")}}"
+  >
+    {{ module|tojson }}
   </script>
-
   <div id="App--{{ instance_id }}"></div>
 </div>

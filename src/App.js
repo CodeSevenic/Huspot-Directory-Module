@@ -1,20 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import SelectSearch from 'react-select-search';
+import ReactPaginate from 'react-paginate';
 
-function App({ moduleData }) {
-  const { companies, hubdbrow_field } = moduleData;
-  // eslint-disable-next-line no-console
-  console.log(
-    'all of your data typically accessed via the "module" keyword in HubL is available as JSON here!',
-    companies,
-    hubdbrow_field,
-  );
+function App({ moduleData, tableData }) {
+  const { companies } = moduleData;
+  console.log(companies);
+
+  // let stringArray = tableData;
+  let stringArray = tableData.slice(1, -1).split('},');
+
+  let storeArray = [];
+
+  stringArray.forEach((element, idx, array) => {
+    if (idx !== array.length - 1) {
+      storeArray.push(element + '}');
+    } else {
+      storeArray.push(element);
+    }
+  });
+
+  const finalArray = [];
+
+  storeArray.forEach((element) => {
+    let fArray = element.split('"').join('');
+    finalArray.push(fArray);
+  });
+  const dataArray = [];
+
+  finalArray.forEach((element) => {
+    dataArray.push(eval('(' + element + ')'));
+  });
+
+  const [data, setData] = useState(dataArray.slice(0, 6));
 
   const options = [
     { name: 'Swedish', value: 'Swedish' },
     { name: 'English', value: 'English' },
   ];
+
+  // function createMarkup(content) {
+  //   return { __html: `${content}` };
+  // }
 
   return (
     <section className="topco-d-container">
@@ -49,10 +76,14 @@ function App({ moduleData }) {
         </div>
 
         <div className="company-logos-grid">
-          {companies.map((company, index) => {
+          {dataArray.map((company, index) => {
             return (
               <div className="logo-box" key={index}>
-                <img width="100%" src={company.company_logo.src} alt="" />
+                {/* {company.company} */}
+                <img width="100%" src={company.image} alt="" />
+                {/* <div
+                  dangerouslySetInnerHTML={createMarkup(company.rich_text)}
+                ></div> */}
               </div>
             );
           })}

@@ -17,6 +17,7 @@ targetModulesData.forEach(({ dataset, textContent }) => {
         portalId={dataset.portalId}
         moduleData={JSON.parse(textContent)}
         moduleInstance={dataset.moduleInstance}
+        tableData={dataset.tableRows}
       />
     </ErrorBoundary>,
     root,

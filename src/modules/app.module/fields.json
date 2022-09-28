@@ -127,21 +127,26 @@
   },
   {
     "columns_to_fetch": [
-      "company"
+      "website_link",
+      "rich_text",
+      "company_name",
+      "sector"
     ],
     "default": {
-      "id": 75066825888
+      "id": 70782908584
     },
     "display_columns": [
-      "company"
+      "company_name",
+      "sector",
+      "website_link"
     ],
     "display_width": null,
-    "id": "5a91ac4d-ac53-34b4-79fc-a026c188d4b7",
+    "id": "677ea108-279f-9302-d9e7-15345af9ae09",
     "label": "HubDB row",
     "locked": false,
     "name": "hubdbrow_field",
     "required": false,
-    "table_name_or_id": "5416353",
+    "table_name_or_id": "5406129",
     "type": "hubdbrow"
   }
 ]

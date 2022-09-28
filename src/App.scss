@@ -82,7 +82,20 @@
 @media screen and (max-width: 767px) {
   .company-logos-grid {
     grid-template-columns: repeat(2, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .logo-box {
     min-height: 100px;
+  }
+
+  .brand-dropdowns {
+    flex-direction: column;
+  }
+
+  .topco-d-search-brand {
+    justify-content: center;
+    flex-direction: column;
   }
 }
 /**

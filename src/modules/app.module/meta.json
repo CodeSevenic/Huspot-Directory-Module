@@ -3,10 +3,12 @@
   "external_js": [],
   "global": false,
   "help_text": "",
-  "host_template_types": ["PAGE"],
+  "host_template_types": [
+    "PAGE"
+  ],
   "icon": "react",
   "js_assets": [],
-  "label": "React app boilerplate",
+  "label": "Topco Directory",
   "other_assets": [],
   "smart_type": "NOT_SMART",
   "tags": [],
