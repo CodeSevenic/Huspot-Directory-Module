@@ -33,6 +33,7 @@ function App({ moduleData, tableData }) {
   });
 
   const [data, setData] = useState(dataArray.slice(0, 6));
+  const [pageNumber, setPageHumber] = useState(0);
 
   const options = [
     { name: 'Swedish', value: 'Swedish' },
@@ -42,6 +43,23 @@ function App({ moduleData, tableData }) {
   // function createMarkup(content) {
   //   return { __html: `${content}` };
   // }
+
+  const dataPerPage = 6;
+  const pagesVisited = pageNumber * dataPerPage;
+
+  const displayData = data
+    .slice(pagesVisited, pagesVisited + dataPerPage)
+    .map((compData, index) => {
+      return (
+        <div className="logo-box" key={index}>
+          {/* {company.company} */}
+          <img width="100%" src={compData.image} alt="" />
+          {/* <div
+                  dangerouslySetInnerHTML={createMarkup(company.rich_text)}
+                ></div> */}
+        </div>
+      );
+    });
 
   return (
     <section className="topco-d-container">
@@ -75,19 +93,7 @@ function App({ moduleData, tableData }) {
           </div>
         </div>
 
-        <div className="company-logos-grid">
-          {dataArray.map((company, index) => {
-            return (
-              <div className="logo-box" key={index}>
-                {/* {company.company} */}
-                <img width="100%" src={company.image} alt="" />
-                {/* <div
-                  dangerouslySetInnerHTML={createMarkup(company.rich_text)}
-                ></div> */}
-              </div>
-            );
-          })}
-        </div>
+        <div className="company-logos-grid">{displayData}</div>
       </div>
     </section>
   );
