@@ -73,6 +73,12 @@
   justify-content: center;
 }
 
+.pagination-section > ul {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+}
+
 @media screen and (max-width: 1023px) {
   .company-logos-grid {
     grid-template-columns: repeat(2, minmax(200px, 1fr));

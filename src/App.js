@@ -32,7 +32,7 @@ function App({ moduleData, tableData }) {
     dataArray.push(eval('(' + element + ')'));
   });
 
-  const [data, setData] = useState(dataArray.slice(0, 6));
+  const [data, setData] = useState(dataArray.slice(0, dataArray.length));
   const [pageNumber, setPageHumber] = useState(0);
 
   const options = [
@@ -60,6 +60,12 @@ function App({ moduleData, tableData }) {
         </div>
       );
     });
+
+  const pageCount = Math.ceil(data.length / dataPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageHumber(selected);
+  };
 
   return (
     <section className="topco-d-container">
@@ -94,6 +100,19 @@ function App({ moduleData, tableData }) {
         </div>
 
         <div className="company-logos-grid">{displayData}</div>
+        <div className="pagination-section">
+          <ReactPaginate
+            previousLabel={'<'}
+            nextLabel={'>'}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={'paginationBttns'}
+            previousClassName={'previousBttn'}
+            nextLinkClassName={'nextBttn'}
+            disabledClassName={'paginationDisabled'}
+            activeClassName={'paginationActive'}
+          />
+        </div>
       </div>
     </section>
   );
