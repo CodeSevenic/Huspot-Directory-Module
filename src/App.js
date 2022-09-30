@@ -5,6 +5,8 @@ import ReactPaginate from 'react-paginate';
 import CloseIcon from './components/svg/CloseIcon';
 import YouTubeEmbed from './components/YouTubeEmbed';
 import GoogleMapper from './components/GoogleMapper';
+import MapBox from './components/MapBox';
+import GoogleIframe from './components/GoogleIframe';
 
 function App({ moduleData, tableData }) {
   // let stringArray = tableData;
@@ -111,7 +113,7 @@ function App({ moduleData, tableData }) {
                 ></div>
               )}
               <div className="googleMap">
-                <GoogleMapper />
+                <GoogleIframe searchWord={compData.location} />
               </div>
             </div>
           </div>
