@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 
-function CloseIcon({ show }) {
+function CloseIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +11,6 @@ function CloseIcon({ show }) {
       version="1.1"
       viewBox="0 0 122.881 122.88"
       xmlSpace="preserve"
-      onClick={show}
     >
       <path
         fillRule="evenodd"
