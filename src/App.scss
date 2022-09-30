@@ -181,9 +181,19 @@ section.topco-d-container {
   width: 100% !important;
 }
 
+.pop-logo > img {
+  width: 100%;
+}
+
 @media screen and (max-width: 1023px) {
   .company-logos-grid {
     grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .popUp-container {
+    padding: 20px;
   }
 }
 
