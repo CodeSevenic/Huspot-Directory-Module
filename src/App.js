@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.scss';
 import SelectSearch from 'react-select-search';
 import ReactPaginate from 'react-paginate';
+import CloseIcon from './components/svg/CloseIcon';
 
 function App({ moduleData, tableData }) {
   const { companies } = moduleData;
@@ -40,9 +41,9 @@ function App({ moduleData, tableData }) {
     { name: 'English', value: 'English' },
   ];
 
-  // function createMarkup(content) {
-  //   return { __html: `${content}` };
-  // }
+  function createMarkup(content) {
+    return { __html: `${content}` };
+  }
 
   const dataPerPage = 6;
   const pagesVisited = pageNumber * dataPerPage;
@@ -50,6 +51,7 @@ function App({ moduleData, tableData }) {
   const displayData = data
     .slice(pagesVisited, pagesVisited + dataPerPage)
     .map((compData, index) => {
+      console.log(compData.rich_text);
       return (
         <div className="logo-box" key={index}>
           {/* {company.company} */}
@@ -57,6 +59,20 @@ function App({ moduleData, tableData }) {
           {/* <div
                   dangerouslySetInnerHTML={createMarkup(company.rich_text)}
                 ></div> */}
+          <div className="info-popUp">
+            <div className="close-svg-icon">
+              <CloseIcon />
+            </div>
+            <div className="popUp-container">
+              <div className="pop-logo">
+                <img src={compData.image} alt={compData.company} />
+              </div>
+              <div
+                dangerouslySetInnerHTML={createMarkup(compData.rich_text)}
+                className="pop-content"
+              ></div>
+            </div>
+          </div>
         </div>
       );
     });

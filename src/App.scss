@@ -1,5 +1,9 @@
 @import url('https://rsms.me/inter/inter.css');
 
+section.topco-d-container {
+  position: relative;
+}
+
 .topco-d-search-brand > h2 {
   font-weight: normal;
   font-size: 48px;
@@ -102,6 +106,38 @@
 .pagination-section > ul > li > a:hover {
   color: #931219;
   font-weight: bold;
+}
+
+.info-popUp {
+  position: absolute;
+  background: red;
+  top: 260px;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  z-index: 55;
+}
+
+.close-svg-icon {
+  width: fit-content;
+  position: absolute;
+  top: 30px;
+  height: fit-content;
+  right: 30px;
+}
+
+.close-svg-icon > svg {
+  width: 50px;
+  cursor: pointer;
+  height: 50px;
+}
+
+.popUp-container {
+  padding: 90px;
+}
+
+.popUp-container > .pop-logo {
+  margin-bottom: 40px;
 }
 
 @media screen and (max-width: 1023px) {
