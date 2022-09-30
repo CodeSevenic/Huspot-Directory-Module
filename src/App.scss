@@ -79,6 +79,31 @@
   gap: 40px;
 }
 
+.pagination-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.pagination-section > ul > li > a {
+  outline: none;
+  color: black;
+  font-size: 24px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-section > ul > .paginationActive > a {
+  color: #931219;
+  font-weight: bold;
+}
+
+.pagination-section > ul > li > a:hover {
+  color: #931219;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 1023px) {
   .company-logos-grid {
     grid-template-columns: repeat(2, minmax(200px, 1fr));
