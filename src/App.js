@@ -102,7 +102,7 @@ function App({ moduleData, tableData }) {
                   <YouTubeEmbed embedId={compData.youtube} />
                 </div>
               )}
-              {compData.address_details !== null && (
+              {compData.address_details !== 'null' && (
                 <div
                   dangerouslySetInnerHTML={createMarkup(
                     compData.address_details,
