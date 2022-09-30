@@ -4,12 +4,12 @@ import SelectSearch from 'react-select-search';
 import ReactPaginate from 'react-paginate';
 import CloseIcon from './components/svg/CloseIcon';
 import YouTubeEmbed from './components/YouTubeEmbed';
-import GoogleMapper from './components/GoogleMapper';
-import MapBox from './components/MapBox';
 import GoogleIframe from './components/GoogleIframe';
 
 function App({ moduleData, tableData }) {
-  // let stringArray = tableData;
+  const [overlay, setOverlay] = useState(false);
+  const [searchBrand, setSearchBrand] = useState('');
+
   let stringArray = tableData.slice(1, -1).split('},');
 
   let storeArray = [];
@@ -58,22 +58,47 @@ function App({ moduleData, tableData }) {
   const dataPerPage = 6;
   const pagesVisited = pageNumber * dataPerPage;
 
+  let objects = data;
+
+  let results = [];
+  const search = (toSearch) => {
+    let terms = toSearch.split(' ');
+    results.push(
+      objects.filter((object) =>
+        terms.every((term) => {
+          return Object.values(object).some((value) =>
+            value.toLowerCase().includes(term),
+          );
+        }),
+      ),
+    );
+    return objects.filter((object) =>
+      terms.every((term) => {
+        return Object.values(object).some((value) =>
+          value.toLowerCase().includes(term),
+        );
+      }),
+    );
+  };
+
+  console.log(search(searchBrand.toLowerCase()));
+
   const displayData = data
     .slice(pagesVisited, pagesVisited + dataPerPage)
     .map((compData, index) => {
-      let show = false;
-      const changeShow = () => {
-        if (show) {
-          show = false;
-        } else {
-          show = true;
-        }
+      const showPopup = () => {
+        setOverlay(true);
+        setActiveIndex(index);
       };
-      console.log(compData.youtube, show);
+
+      const closePopup = () => {
+        setOverlay(false);
+        setActiveIndex(null);
+      };
 
       return (
         <div key={index}>
-          <div onClick={() => setActiveIndex(index)} className="logo-box">
+          <div onClick={() => showPopup()} className="logo-box">
             {/* {company.company} */}
             <img width="100%" src={compData.image} alt="" />
             {/* <div
@@ -85,10 +110,7 @@ function App({ moduleData, tableData }) {
             style={activeIndex === index ? activeStyle : normalStyle}
             className="info-popUp"
           >
-            <div
-              onClick={() => setActiveIndex(null)}
-              className="close-svg-icon"
-            >
+            <div onClick={() => closePopup()} className="close-svg-icon">
               <CloseIcon />
             </div>
             <div className="popUp-container">
@@ -128,53 +150,66 @@ function App({ moduleData, tableData }) {
   };
 
   return (
-    <section className="topco-d-container">
-      <div className="topco-d-wrapper">
-        <div className="topco-d-search-brand">
-          <h2>
-            <b>We</b> Are <b>Proud</b> Of <b>Our</b> Brands
-          </h2>
-          <div className="topco-d-search-brand-box">
-            <input type="search" name="" id="" placeholder="Search Brand" />
+    <>
+      {overlay && <div className="overlay-back"></div>}
+      <section className="topco-d-container">
+        <div className="topco-d-wrapper">
+          <div className="topco-d-search-brand">
+            <h2>
+              <b>We</b> Are <b>Proud</b> Of <b>Our</b> Brands
+            </h2>
+            <div className="topco-d-search-brand-box">
+              <input
+                onChange={(e) => setSearchBrand(e.target.value)}
+                type="search"
+                list="brand-suggestions"
+                placeholder="Search Brand"
+              />
+              <datalist id="brand-suggestions">
+                {search(searchBrand.toLowerCase())?.map((brand, index) => {
+                  return <option key={index}>{brand.company}</option>;
+                })}
+              </datalist>
+            </div>
           </div>
-        </div>
 
-        <div className="brand-dropdowns">
-          <div className="topco-brand-selectors">
-            <select name="brand-select" id="brand-select">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="opel">Opel</option>
-              <option value="audi">Audi</option>
-            </select>
+          <div className="brand-dropdowns">
+            <div className="topco-brand-selectors">
+              <select name="brand-select" id="brand-select">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+              </select>
+            </div>
+            <SelectSearch
+              options={options}
+              name="language"
+              placeholder="Brand Sector"
+              search
+            />
+            <div className="results-btn">
+              <button>See Results</button>
+            </div>
           </div>
-          <SelectSearch
-            options={options}
-            name="language"
-            placeholder="Brand Sector"
-            search
-          />
-          <div className="results-btn">
-            <button>See Results</button>
-          </div>
-        </div>
 
-        <div className="company-logos-grid">{displayData}</div>
-        <div className="pagination-section">
-          <ReactPaginate
-            previousLabel={'<'}
-            nextLabel={'>'}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            containerClassName={'paginationBttns'}
-            previousClassName={'previousBttn'}
-            nextLinkClassName={'nextBttn'}
-            disabledClassName={'paginationDisabled'}
-            activeClassName={'paginationActive'}
-          />
+          <div className="company-logos-grid">{displayData}</div>
+          <div className="pagination-section">
+            <ReactPaginate
+              previousLabel={'<'}
+              nextLabel={'>'}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={'paginationBttns'}
+              previousClassName={'previousBttn'}
+              nextLinkClassName={'nextBttn'}
+              disabledClassName={'paginationDisabled'}
+              activeClassName={'paginationActive'}
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

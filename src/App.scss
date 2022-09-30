@@ -18,6 +18,7 @@ section.topco-d-container {
 .topco-d-search-brand-box {
   max-width: 550px;
   width: 100%;
+  position: relative;
 }
 
 .topco-d-search-brand-box > input {
@@ -140,6 +141,7 @@ section.topco-d-container {
 
 .popUp-container > .pop-logo {
   margin-bottom: 40px;
+  max-width: 310px;
 }
 
 .address-details table {
@@ -183,6 +185,42 @@ section.topco-d-container {
 
 .pop-logo > img {
   width: 100%;
+}
+
+.overlay-back {
+  position: fixed;
+  background: #00000052;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+}
+
+#brand-suggestions {
+  background: #fff;
+  height: fit-content;
+  overflow: scroll;
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  z-index: 20;
+  max-height: 50vh;
+}
+
+#brand-suggestions.active {
+  display: block;
+}
+
+#brand-suggestions > option {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+#brand-suggestions > option:hover {
+  color: #fff;
+  background: #931219;
 }
 
 @media screen and (max-width: 1023px) {
