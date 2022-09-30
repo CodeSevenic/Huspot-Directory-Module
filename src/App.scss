@@ -110,12 +110,13 @@ section.topco-d-container {
 
 .info-popUp {
   position: absolute;
-  background: red;
+  background: white;
   top: 260px;
   left: 0;
   right: 0;
   min-height: 100vh;
   z-index: 55;
+  box-shadow: 0 0 14px -10px #1c1c1c73;
 }
 
 .close-svg-icon {
@@ -138,6 +139,37 @@ section.topco-d-container {
 
 .popUp-container > .pop-logo {
   margin-bottom: 40px;
+}
+
+.address-details table {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.address-details table tbody tr:nth-child(2n) {
+  background: #f1f1f1cc;
+}
+
+.address-details table tbody tr td {
+  border-color: #cbcbcb;
+  color: #858585;
+}
+
+.address-details table tbody tr:nth-child(1n):not(:last-child) td {
+  border-bottom: none;
+}
+
+.address-details table tbody tr:nth-child(2n) td {
+  border-top: none;
+}
+
+.address-details table tbody tr {
+  height: 10px;
+  line-height: 0.8;
+}
+
+.googleMap > div {
+  width: 100% !important;
 }
 
 @media screen and (max-width: 1023px) {

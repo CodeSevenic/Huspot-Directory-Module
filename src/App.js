@@ -3,11 +3,10 @@ import './App.scss';
 import SelectSearch from 'react-select-search';
 import ReactPaginate from 'react-paginate';
 import CloseIcon from './components/svg/CloseIcon';
+import YouTubeEmbed from './components/YouTubeEmbed';
+import GoogleMapper from './components/GoogleMapper';
 
 function App({ moduleData, tableData }) {
-  const { companies } = moduleData;
-  console.log(companies);
-
   // let stringArray = tableData;
   let stringArray = tableData.slice(1, -1).split('},');
 
@@ -71,6 +70,16 @@ function App({ moduleData, tableData }) {
                 dangerouslySetInnerHTML={createMarkup(compData.rich_text)}
                 className="pop-content"
               ></div>
+              <div className="youTube">
+                <YouTubeEmbed embedId={compData.youtube} />
+              </div>
+              <div
+                dangerouslySetInnerHTML={createMarkup(compData.address_details)}
+                className="address-details"
+              ></div>
+              <div className="googleMap">
+                <GoogleMapper />
+              </div>
             </div>
           </div>
         </div>

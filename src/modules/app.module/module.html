@@ -5,6 +5,8 @@ name %} {% set comp_table_rows = hubdb_table_rows(5406129) %} {#
 new_list = [] %} {% for row in comp_table_rows %} {% set new_list2 =
 new_list.append({"company": "'" + row.company_name + "'", "image": "'" +
 row.brand_image.url + "'", "rich_text": "`" + row.rich_text|replace('"', "'")|replace(":", "")|replace("='", "")|replace(";'", "") +
+"`", "youtube": "'" +
+row.youtube_code + "'", "address_details": "`" + row.address_details|replace('"', "'")|replace(":", "")|replace("='", "")|replace(";'", "") +
 "`"}) %} {% endfor %} 
 
 <div class="cms-react-boilerplate">
@@ -12,7 +14,7 @@ row.brand_image.url + "'", "rich_text": "`" + row.rich_text|replace('"', "'")|re
     type="application/json"
     data-module-instance="{{ instance_id }}"
     data-portal-id="{{ portal_id }}"
-    data-table-rows="{{new_list|replace('company=', "'company' : ")|replace('image=', "'image' : ")|replace('rich_text=', "'rich_text' : ")}}"
+    data-table-rows="{{new_list|replace('company=', "'company' : ")|replace('image=', "'image' : ")|replace('rich_text=', "'rich_text' : ")|replace('address_details=', "'address_details' : ")|replace('youtube=', "'youtube' : ")}}"
   >
     {{ module|tojson }}
   </script>
