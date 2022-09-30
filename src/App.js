@@ -7,6 +7,7 @@ import YouTubeEmbed from './components/YouTubeEmbed';
 import GoogleMapper from './components/GoogleMapper';
 
 function App({ moduleData, tableData }) {
+  const [show, setShow] = useState(false);
   // let stringArray = tableData;
   let stringArray = tableData.slice(1, -1).split('},');
 
@@ -50,38 +51,47 @@ function App({ moduleData, tableData }) {
   const displayData = data
     .slice(pagesVisited, pagesVisited + dataPerPage)
     .map((compData, index) => {
-      console.log(compData.rich_text);
       return (
-        <div className="logo-box" key={index}>
-          {/* {company.company} */}
-          <img width="100%" src={compData.image} alt="" />
-          {/* <div
+        <div key={index}>
+          <div onClick={() => setShow(true)} className="logo-box">
+            {/* {company.company} */}
+            <img width="100%" src={compData.image} alt="" />
+            {/* <div
                   dangerouslySetInnerHTML={createMarkup(company.rich_text)}
                 ></div> */}
-          <div className="info-popUp">
-            <div className="close-svg-icon">
-              <CloseIcon />
-            </div>
-            <div className="popUp-container">
-              <div className="pop-logo">
-                <img src={compData.image} alt={compData.company} />
-              </div>
-              <div
-                dangerouslySetInnerHTML={createMarkup(compData.rich_text)}
-                className="pop-content"
-              ></div>
-              <div className="youTube">
-                <YouTubeEmbed embedId={compData.youtube} />
-              </div>
-              <div
-                dangerouslySetInnerHTML={createMarkup(compData.address_details)}
-                className="address-details"
-              ></div>
-              <div className="googleMap">
-                <GoogleMapper />
-              </div>
-            </div>
           </div>
+          {show && (
+            <div className="info-popUp">
+              <div className="close-svg-icon">
+                <CloseIcon show={() => setShow(false)} />
+              </div>
+              <div className="popUp-container">
+                <div className="pop-logo">
+                  <img src={compData.image} alt={compData.company} />
+                </div>
+                <div
+                  dangerouslySetInnerHTML={createMarkup(compData.rich_text)}
+                  className="pop-content"
+                ></div>
+                {compData.youtube && (
+                  <div className="youTube">
+                    <YouTubeEmbed embedId={compData.youtube} />
+                  </div>
+                )}
+                {compData.address_details && (
+                  <div
+                    dangerouslySetInnerHTML={createMarkup(
+                      compData.address_details,
+                    )}
+                    className="address-details"
+                  ></div>
+                )}
+                <div className="googleMap">
+                  <GoogleMapper />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       );
     });
