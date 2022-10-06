@@ -29,6 +29,13 @@ section.topco-d-container {
   border-color: black;
 }
 
+.topco-d-search-brand-box > input::-webkit-search-results-button {
+  display: none;
+}
+.topco-d-search-brand-box > input::-webkit-search-results-decoration {
+  display: none;
+}
+
 .topco-brand-selectors > select {
   border-color: black;
   border-radius: 0;
@@ -36,6 +43,11 @@ section.topco-d-container {
   font-size: 20px;
   height: 70px;
   border-width: 2px;
+  padding: 0 20px;
+}
+
+select#brand-select > option:hover {
+  background: #931219;
 }
 
 .topco-brand-selectors {
@@ -252,6 +264,25 @@ section.topco-d-container {
   .topco-d-search-brand {
     justify-content: center;
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .address-details table {
+    margin-bottom: 60px;
+    border: 1px solid #ffffff;
+  }
+
+  .address-details table tbody tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pagination-section > ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    flex-wrap: wrap;
   }
 }
 /**

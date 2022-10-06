@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import SelectSearch from 'react-select-search';
 import ReactPaginate from 'react-paginate';
@@ -37,11 +37,6 @@ function App({ moduleData, tableData }) {
   const [data, setData] = useState(dataArray.slice(0, dataArray.length));
   const [pageNumber, setPageHumber] = useState(0);
 
-  const options = [
-    { name: 'Swedish', value: 'Swedish' },
-    { name: 'English', value: 'English' },
-  ];
-
   function createMarkup(content) {
     return { __html: `${content}` };
   }
@@ -51,27 +46,17 @@ function App({ moduleData, tableData }) {
   let activeStyle = { display: 'block' };
   let normalStyle = { display: 'none' };
 
-  const handleClick = (i) => {
-    setActiveIndex(i);
-  };
+  // const handleClick = (i) => {
+  //   setActiveIndex(i);
+  // };
 
   const dataPerPage = 6;
   const pagesVisited = pageNumber * dataPerPage;
 
   let objects = data;
 
-  let results = [];
   const search = (toSearch) => {
     let terms = toSearch.split(' ');
-    results.push(
-      objects.filter((object) =>
-        terms.every((term) => {
-          return Object.values(object).some((value) =>
-            value.toLowerCase().includes(term),
-          );
-        }),
-      ),
-    );
     return objects.filter((object) =>
       terms.every((term) => {
         return Object.values(object).some((value) =>
@@ -81,10 +66,8 @@ function App({ moduleData, tableData }) {
     );
   };
 
-  console.log(search(searchBrand.toLowerCase()));
-
-  const displayData = data
-    .slice(pagesVisited, pagesVisited + dataPerPage)
+  const displayData = search(searchBrand.toLowerCase())
+    ?.slice(pagesVisited, pagesVisited + dataPerPage)
     .map((compData, index) => {
       const showPopup = () => {
         setOverlay(true);
@@ -99,11 +82,7 @@ function App({ moduleData, tableData }) {
       return (
         <div key={index}>
           <div onClick={() => showPopup()} className="logo-box">
-            {/* {company.company} */}
             <img width="100%" src={compData.image} alt="" />
-            {/* <div
-                  dangerouslySetInnerHTML={createMarkup(company.rich_text)}
-                ></div> */}
           </div>
 
           <div
@@ -143,11 +122,15 @@ function App({ moduleData, tableData }) {
       );
     });
 
-  const pageCount = Math.ceil(data.length / dataPerPage);
+  const pageCount = Math.ceil(
+    search(searchBrand.toLowerCase())?.length / dataPerPage,
+  );
 
   const changePage = ({ selected }) => {
     setPageHumber(selected);
   };
+
+  console.log(search(searchBrand.toLowerCase()));
 
   return (
     <>
@@ -159,34 +142,76 @@ function App({ moduleData, tableData }) {
               <b>We</b> Are <b>Proud</b> Of <b>Our</b> Brands
             </h2>
             <div className="topco-d-search-brand-box">
-              <input
-                onChange={(e) => setSearchBrand(e.target.value)}
-                type="search"
-                list="brand-suggestions"
+              <SelectSearch
+                search={true}
+                options={search(searchBrand.toLowerCase())?.map((brand) => ({
+                  name: brand.company,
+                  value: brand.company,
+                }))}
+                name="language"
                 placeholder="Search Brand"
+                onChange={function () {
+                  setTimeout(() => {
+                    setSearchBrand(
+                      document.querySelector(
+                        '.topco-d-search-brand-box .select-search-is-selected',
+                      ).textContent,
+                    );
+                  }, 100);
+                }}
               />
-              <datalist id="brand-suggestions">
-                {search(searchBrand.toLowerCase())?.map((brand, index) => {
-                  return <option key={index}>{brand.company}</option>;
-                })}
-              </datalist>
             </div>
           </div>
 
           <div className="brand-dropdowns">
             <div className="topco-brand-selectors">
-              <select name="brand-select" id="brand-select">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+              <select
+                onChange={(e) => setSearchBrand(e.target.value)}
+                name="brand-select"
+                id="brand-select"
+              >
+                {data
+                  ?.filter(
+                    (brand, index) =>
+                      index ===
+                      data?.findIndex(
+                        (other) => brand.company === other.company,
+                      ),
+                  )
+                  ?.map((brand, index) => (
+                    <option key={index} value={brand.company}>
+                      {brand.company}
+                    </option>
+                  ))}
               </select>
             </div>
             <SelectSearch
-              options={options}
+              search={true}
+              options={search(searchBrand.toLowerCase())
+                ?.filter(
+                  (brand, index) =>
+                    index ===
+                    search(searchBrand.toLowerCase())?.findIndex(
+                      (other) => brand.sector === other.sector,
+                    ),
+                )
+                ?.map((brand) => {
+                  return {
+                    name: brand.sector,
+                    value: brand.sector,
+                  };
+                })}
               name="language"
               placeholder="Brand Sector"
-              search
+              onChange={function () {
+                setTimeout(() => {
+                  setSearchBrand(
+                    document.querySelector(
+                      '.brand-dropdowns .select-search-is-selected',
+                    ).textContent,
+                  );
+                }, 100);
+              }}
             />
             <div className="results-btn">
               <button>See Results</button>

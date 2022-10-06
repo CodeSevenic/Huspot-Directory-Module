@@ -7,14 +7,14 @@ new_list.append({"company": "'" + row.company_name + "'", "image": "'" +
 row.brand_image.url + "'", "rich_text": "`" + row.rich_text|replace('"', "'")|replace(":", "")|replace("='", "")|replace(";'", "") +
 "`", "youtube": "'" +
 row.youtube_code + "'", "address_details": "`" + row.address_details|replace('"', "'")|replace(":", "")|replace("='", "")|replace(";'", "") +
-"`", "location": "'" + row.location_name + "'"}) %} {% endfor %} 
+"`", "location": "'" + row.location_name + "'","sector": "'" + row.sector + "'"}) %} {% endfor %} 
 
 <div class="cms-react-boilerplate">
   <script
     type="application/json"
     data-module-instance="{{ instance_id }}"
     data-portal-id="{{ portal_id }}"
-    data-table-rows="{{new_list|replace('company=', "'company' : ")|replace('image=', "'image' : ")|replace('rich_text=', "'rich_text' : ")|replace('address_details=', "'address_details' : ")|replace('youtube=', "'youtube' : ")|replace('location=', "'location' : ")}}"
+    data-table-rows="{{new_list|replace('company=', "'company' : ")|replace('image=', "'image' : ")|replace('rich_text=', "'rich_text' : ")|replace('address_details=', "'address_details' : ")|replace('youtube=', "'youtube' : ")|replace('location=', "'location' : ")|replace('sector=', "'sector' : ")}}"
   >
     {{ module|tojson }}
   </script>
