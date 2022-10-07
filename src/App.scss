@@ -284,6 +284,11 @@ select#brand-select > option:hover {
     list-style: none;
     flex-wrap: wrap;
   }
+
+  .popUp-container > .pop-logo {
+    margin-bottom: 40px;
+    max-width: 170px;
+  }
 }
 /**
  * Main wrapper
